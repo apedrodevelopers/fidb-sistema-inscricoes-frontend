@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cursos — Capacita CFTI</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<nav class="nav-lateral">
+  <a href="../../publico/inicio.html" class="nav-marca">
+    <div class="nav-marca-icone">🎓</div>
+    <div><div class="nav-marca-nome">Capacita CFTI</div><div class="nav-marca-sub">Área Admin</div></div>
+  </a>
+  <div class="nav-utilizador">
+    <div class="nav-avatar">AD</div>
+    <div><div class="nav-utilizador-nome">Administrador</div><div class="nav-utilizador-cargo">Gestor do sistema</div></div>
+  </div>
+  <div class="nav-corpo">
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Principal</div>
+      <a href="../dashboard.html" class="nav-item"><span class="nav-item-icone">📊</span> Dashboard</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Gestão</div>
+      <a href="listar.html" class="nav-item activo"><span class="nav-item-icone">🎓</span> Cursos</a>
+      <a href="../formandos/listar.html" class="nav-item"><span class="nav-item-icone">👥</span> Formandos</a>
+      <a href="../usuarios/listar.html" class="nav-item"><span class="nav-item-icone">🔑</span> Utilizadores</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Sistema</div>
+      <a href="../../publico/inicio.html" class="nav-item"><span class="nav-item-icone">🌐</span> Site público</a>
+    </div>
+  </div>
+  <div class="nav-rodape">
+    <a href="../entrar.html" class="nav-sair"><span>🚪</span> Sair</a>
+  </div>
+</nav>
+
+<div class="area-principal">
+  <header class="barra-topo">
+    <div>
+      <div class="barra-topo-titulo">Cursos</div>
+      <div class="barra-topo-sub">Cadastro e gestão da oferta formativa</div>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <div class="cab-secao">
+      <div>
+        <div class="cab-titulo">Lista de cursos</div>
+        <div class="cab-sub">6 curso(s) registado(s)</div>
+      </div>
+      <a href="criar.html" class="btn btn-primario">+ Novo curso</a>
+    </div>
+
+    <div class="cartao animar">
+      <div class="tabela-envolvedor">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Curso</th>
+              <th>Área</th>
+              <th>Duração</th>
+              <th>Modalidade</th>
+              <th>Início</th>
+              <th>Vagas</th>
+              <th>Propina</th>
+              <th>Estado</th>
+              <th>Acções</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="font-size:20px;">🖥️</span>
+                  <div>
+                    <div style="font-weight:600;font-size:13px;">Desenvolvimento Web Frontend</div>
+                    <div style="font-size:11px;color:var(--texto-mudo);">HTML, CSS, JavaScript & Frameworks</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Tecnologia Web</td>
+              <td>4 meses</td>
+              <td><span class="etiqueta etiqueta-sucesso">Presencial</span></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">15/01/2025</td>
+              <td>14<span style="color:var(--texto-mudo);">/20</span></td>
+              <td style="font-size:12px;">45.000 AOA</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Activo</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="editar.html?id=1" class="btn btn-secundario btn-sm">✏️ Editar</a>
+                  <a href="eliminar.html?id=1" class="btn btn-perigo btn-sm" onclick="return confirm('Eliminar este curso?')">🗑</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="font-size:20px;">⚙️</span>
+                  <div>
+                    <div style="font-weight:600;font-size:13px;">Desenvolvimento Backend</div>
+                    <div style="font-size:11px;color:var(--texto-mudo);">Node.js, Python, APIs REST</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Tecnologia Web</td>
+              <td>5 meses</td>
+              <td><span class="etiqueta etiqueta-sucesso">Presencial</span></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">15/01/2025</td>
+              <td>18<span style="color:var(--texto-mudo);">/20</span></td>
+              <td style="font-size:12px;">55.000 AOA</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Activo</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="editar.html?id=2" class="btn btn-secundario btn-sm">✏️ Editar</a>
+                  <a href="eliminar.html?id=2" class="btn btn-perigo btn-sm" onclick="return confirm('Eliminar este curso?')">🗑</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="font-size:20px;">🗄️</span>
+                  <div>
+                    <div style="font-weight:600;font-size:13px;">Base de Dados e SQL</div>
+                    <div style="font-size:11px;color:var(--texto-mudo);">MySQL, PostgreSQL, Modelagem</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Dados</td>
+              <td>3 meses</td>
+              <td><span class="etiqueta etiqueta-sucesso">Presencial</span></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">01/02/2025</td>
+              <td>10<span style="color:var(--texto-mudo);">/25</span></td>
+              <td style="font-size:12px;">35.000 AOA</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Activo</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="editar.html?id=3" class="btn btn-secundario btn-sm">✏️ Editar</a>
+                  <a href="eliminar.html?id=3" class="btn btn-perigo btn-sm" onclick="return confirm('Eliminar este curso?')">🗑</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="font-size:20px;">🎨</span>
+                  <div>
+                    <div style="font-weight:600;font-size:13px;">Design de Interfaces (UI/UX)</div>
+                    <div style="font-size:11px;color:var(--texto-mudo);">Figma, Prototipagem, Usabilidade</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Design</td>
+              <td>3 meses</td>
+              <td><span class="etiqueta etiqueta-info">Online</span></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">20/01/2025</td>
+              <td>22<span style="color:var(--texto-mudo);">/30</span></td>
+              <td style="font-size:12px;">30.000 AOA</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Activo</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="editar.html?id=4" class="btn btn-secundario btn-sm">✏️ Editar</a>
+                  <a href="eliminar.html?id=4" class="btn btn-perigo btn-sm" onclick="return confirm('Eliminar este curso?')">🗑</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="font-size:20px;">🌐</span>
+                  <div>
+                    <div style="font-weight:600;font-size:13px;">Redes e Infraestrutura</div>
+                    <div style="font-size:11px;color:var(--texto-mudo);">TCP/IP, Servidores, Linux</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Infraestrutura</td>
+              <td>4 meses</td>
+              <td><span class="etiqueta etiqueta-sucesso">Presencial</span></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">10/02/2025</td>
+              <td>12<span style="color:var(--texto-mudo);">/20</span></td>
+              <td style="font-size:12px;">40.000 AOA</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Activo</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="editar.html?id=5" class="btn btn-secundario btn-sm">✏️ Editar</a>
+                  <a href="eliminar.html?id=5" class="btn btn-perigo btn-sm" onclick="return confirm('Eliminar este curso?')">🗑</a>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <div style="display:flex;align-items:center;gap:9px;">
+                  <span style="font-size:20px;">🔐</span>
+                  <div>
+                    <div style="font-weight:600;font-size:13px;">Cibersegurança Básica</div>
+                    <div style="font-size:11px;color:var(--texto-mudo);">Segurança, Criptografia, Protecção</div>
+                  </div>
+                </div>
+              </td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Segurança</td>
+              <td>3 meses</td>
+              <td><span class="etiqueta etiqueta-info">Online</span></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">15/02/2025</td>
+              <td>9<span style="color:var(--texto-mudo);">/25</span></td>
+              <td style="font-size:12px;">35.000 AOA</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Activo</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="editar.html?id=6" class="btn btn-secundario btn-sm">✏️ Editar</a>
+                  <a href="eliminar.html?id=6" class="btn btn-perigo btn-sm" onclick="return confirm('Eliminar este curso?')">🗑</a>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+</body>
+</html>

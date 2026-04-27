@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Curso — Capacita CFTI</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<nav class="nav-lateral">
+  <a href="../../publico/inicio.html" class="nav-marca">
+    <div class="nav-marca-icone">🎓</div>
+    <div><div class="nav-marca-nome">Capacita CFTI</div><div class="nav-marca-sub">Área Admin</div></div>
+  </a>
+  <div class="nav-utilizador">
+    <div class="nav-avatar">AD</div>
+    <div><div class="nav-utilizador-nome">Administrador</div><div class="nav-utilizador-cargo">Gestor do sistema</div></div>
+  </div>
+  <div class="nav-corpo">
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Principal</div>
+      <a href="../dashboard.html" class="nav-item"><span class="nav-item-icone">📊</span> Dashboard</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Gestão</div>
+      <a href="listar.html" class="nav-item activo"><span class="nav-item-icone">🎓</span> Cursos</a>
+      <a href="../formandos/listar.html" class="nav-item"><span class="nav-item-icone">👥</span> Formandos</a>
+      <a href="../usuarios/listar.html" class="nav-item"><span class="nav-item-icone">🔑</span> Utilizadores</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Sistema</div>
+      <a href="../../publico/inicio.html" class="nav-item"><span class="nav-item-icone">🌐</span> Site público</a>
+    </div>
+  </div>
+  <div class="nav-rodape">
+    <a href="../entrar.html" class="nav-sair"><span>🚪</span> Sair</a>
+  </div>
+</nav>
+
+<div class="area-principal">
+  <header class="barra-topo">
+    <div>
+      <div class="barra-topo-titulo">Editar Curso</div>
+      <div class="barra-topo-sub">Desenvolvimento Web Frontend</div>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <div class="cab-secao">
+      <div>
+        <div class="cab-titulo">Editar curso</div>
+        <div class="cab-sub">Altere os campos pretendidos e guarde</div>
+      </div>
+      <a href="listar.html" class="btn btn-secundario">← Voltar à lista</a>
+    </div>
+
+    <!-- action="editar.php?id=1" method="POST" — a implementar no backend -->
+    <form action="listar.html" method="GET">
+      <!-- input type="hidden" name="id" value="1" — a descomentar no backend -->
+
+      <div class="cartao animar">
+        <div class="cartao-cab"><div class="cartao-titulo">Identificação do curso</div></div>
+        <div class="cartao-corpo">
+
+          <div class="linha-2">
+            <div class="grupo">
+              <label class="rotulo" for="emoji">Emoji <span class="obg">*</span></label>
+              <select id="emoji" name="emoji">
+                <option value="🖥️" selected>🖥️  Monitor</option>
+                <option value="⚙️">⚙️  Engrenagem</option>
+                <option value="🗄️">🗄️  Base de dados</option>
+                <option value="🎨">🎨  Design</option>
+                <option value="🌐">🌐  Redes</option>
+                <option value="🔐">🔐  Segurança</option>
+                <option value="💻">💻  Computador</option>
+                <option value="📱">📱  Mobile</option>
+                <option value="☁️">☁️  Cloud</option>
+                <option value="📊">📊  Analytics</option>
+                <option value="🤖">🤖  Inteligência Artificial</option>
+                <option value="📘">📘  Outro</option>
+              </select>
+            </div>
+            <div class="grupo">
+              <label class="rotulo" for="estado">Estado <span class="obg">*</span></label>
+              <select id="estado" name="estado">
+                <option value="activo" selected>🟢 Activo</option>
+                <option value="em-breve">🟡 Em breve</option>
+                <option value="inactivo">🔴 Inactivo</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="grupo">
+            <label class="rotulo" for="nome">Nome do curso <span class="obg">*</span></label>
+            <input type="text" id="nome" name="nome" value="Desenvolvimento Web Frontend" required>
+          </div>
+
+          <div class="grupo">
+            <label class="rotulo" for="subtitulo">Subtítulo / Tecnologias <span class="obg">*</span></label>
+            <input type="text" id="subtitulo" name="subtitulo" value="HTML, CSS, JavaScript & Frameworks" required>
+          </div>
+
+          <div class="linha-2">
+            <div class="grupo">
+              <label class="rotulo" for="area">Área temática <span class="obg">*</span></label>
+              <select id="area" name="area">
+                <option selected>Tecnologia Web</option>
+                <option>Dados</option>
+                <option>Design</option>
+                <option>Infraestrutura</option>
+                <option>Segurança</option>
+                <option>Mobile</option>
+                <option>Cloud / DevOps</option>
+                <option>Inteligência Artificial</option>
+              </select>
+            </div>
+            <div class="grupo">
+              <label class="rotulo" for="duracao">Duração <span class="obg">*</span></label>
+              <select id="duracao" name="duracao">
+                <option>1 mês</option>
+                <option>2 meses</option>
+                <option>3 meses</option>
+                <option selected>4 meses</option>
+                <option>5 meses</option>
+                <option>6 meses</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="cartao animar" style="animation-delay:.08s">
+        <div class="cartao-cab"><div class="cartao-titulo">Detalhes e disponibilidade</div></div>
+        <div class="cartao-corpo">
+
+          <div class="linha-3">
+            <div class="grupo">
+              <label class="rotulo" for="modalidade">Modalidade <span class="obg">*</span></label>
+              <select id="modalidade" name="modalidade">
+                <option selected>Presencial</option>
+                <option>Online</option>
+                <option>Híbrido</option>
+              </select>
+            </div>
+            <div class="grupo">
+              <label class="rotulo" for="vagas">Nº de vagas <span class="obg">*</span></label>
+              <input type="number" id="vagas" name="vagas" min="1" value="20" required>
+            </div>
+            <div class="grupo">
+              <label class="rotulo" for="preco">Propina (AOA)</label>
+              <input type="number" id="preco" name="preco" min="0" step="500" value="45000">
+            </div>
+          </div>
+
+          <div class="linha-2">
+            <div class="grupo">
+              <label class="rotulo" for="inicio">Data de início <span class="obg">*</span></label>
+              <input type="date" id="inicio" name="inicio" value="2025-01-15" required>
+            </div>
+            <div class="grupo">
+              <label class="rotulo" for="horario">Horário <span class="obg">*</span></label>
+              <select id="horario" name="horario">
+                <option selected>Manhã (08h–12h)</option>
+                <option>Tarde (14h–18h)</option>
+                <option>Pós-laboral (18h–21h)</option>
+                <option>Sábados (08h–13h)</option>
+                <option>Flexível</option>
+              </select>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="display:flex; gap:10px; justify-content:flex-end;">
+        <a href="listar.html" class="btn btn-secundario">Cancelar</a>
+        <button type="submit" class="btn btn-primario">✓ Guardar alterações</button>
+      </div>
+
+    </form>
+
+  </main>
+</div>
+
+</body>
+</html>

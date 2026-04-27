@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formandos — Capacita CFTI</title>
+  <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+
+<nav class="nav-lateral">
+  <a href="../../publico/inicio.html" class="nav-marca">
+    <div class="nav-marca-icone">🎓</div>
+    <div><div class="nav-marca-nome">Capacita CFTI</div><div class="nav-marca-sub">Área Admin</div></div>
+  </a>
+  <div class="nav-utilizador">
+    <div class="nav-avatar">AD</div>
+    <div><div class="nav-utilizador-nome">Administrador</div><div class="nav-utilizador-cargo">Gestor do sistema</div></div>
+  </div>
+  <div class="nav-corpo">
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Principal</div>
+      <a href="../dashboard.html" class="nav-item"><span class="nav-item-icone">📊</span> Dashboard</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Gestão</div>
+      <a href="../cursos/listar.html" class="nav-item"><span class="nav-item-icone">🎓</span> Cursos</a>
+      <a href="listar.html" class="nav-item activo"><span class="nav-item-icone">👥</span> Formandos</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Sistema</div>
+      <a href="../../publico/inicio.html" class="nav-item"><span class="nav-item-icone">🌐</span> Site público</a>
+    </div>
+  </div>
+  <div class="nav-rodape">
+    <a href="../entrar.html" class="nav-sair"><span>🚪</span> Sair</a>
+  </div>
+</nav>
+
+<div class="area-principal">
+  <header class="barra-topo">
+    <div>
+      <div class="barra-topo-titulo">Formandos</div>
+      <div class="barra-topo-sub">Gestão de inscrições</div>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- MÉTRICAS -->
+    <div class="grelha-metricas">
+      <div class="metrica animar">
+        <div class="metrica-icone azul">📝</div>
+        <div><div class="metrica-rotulo">Total de inscrições</div><div class="metrica-valor">10</div></div>
+      </div>
+      <div class="metrica animar" style="animation-delay:.06s">
+        <div class="metrica-icone verde">✅</div>
+        <div><div class="metrica-rotulo">Aprovados</div><div class="metrica-valor">6</div></div>
+      </div>
+      <div class="metrica animar" style="animation-delay:.12s">
+        <div class="metrica-icone aviso">⏳</div>
+        <div><div class="metrica-rotulo">Pendentes</div><div class="metrica-valor">3</div></div>
+      </div>
+    </div>
+
+    <!-- FILTROS — links simples prontos para integrar com ?estado= no PHP -->
+    <div class="barra-filtros">
+      <a href="listar.html" class="btn-filtro activo">Todos (10)</a>
+      <a href="listar.html?estado=aprovado" class="btn-filtro">✅ Aprovados</a>
+      <a href="listar.html?estado=pendente" class="btn-filtro">⏳ Pendentes</a>
+      <a href="listar.html?estado=rejeitado" class="btn-filtro">❌ Rejeitados</a>
+      <!-- Filtro por curso via form GET — a integrar com PHP -->
+      <form method="GET" action="listar.html" style="margin-left:auto; display:flex; gap:6px;">
+        <select name="curso" style="font-size:12px; padding:6px 10px; max-width:200px;">
+          <option value="">Todos os cursos</option>
+          <option value="1">Web Frontend</option>
+          <option value="2">Backend</option>
+          <option value="3">Base de Dados</option>
+          <option value="4">UI/UX Design</option>
+          <option value="5">Redes</option>
+          <option value="6">Cibersegurança</option>
+        </select>
+        <button type="submit" class="btn btn-secundario btn-sm">Filtrar</button>
+      </form>
+    </div>
+
+    <!-- TABELA -->
+    <div class="cartao animar" style="animation-delay:.18s">
+      <div class="cartao-cab">
+        <div class="cartao-titulo">Lista de formandos</div>
+        <div class="cartao-sub">10 resultado(s)</div>
+      </div>
+      <div class="tabela-envolvedor">
+        <table class="tabela">
+          <thead>
+            <tr>
+              <th>Formando</th>
+              <th>Nº Inscrição</th>
+              <th>Curso</th>
+              <th>Data</th>
+              <th>Estado</th>
+              <th>Acções</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar azul">AM</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Ana Cristina Monteiro</div>
+                    <div class="celula-pessoa-email">ana.monteiro@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10001</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Desenvolvimento Web Frontend</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">03/01/2025</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <!-- Ver — navega para página de detalhes -->
+                  <a href="ver.html?id=1" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <!-- Aprovar — link directo para acção PHP: href="actualizar_estado.php?id=1&estado=aprovado" -->
+                  <a href="actualizar_estado.html?id=1&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <!-- Rejeitar — link directo para acção PHP: href="actualizar_estado.php?id=1&estado=rejeitado" -->
+                  <a href="actualizar_estado.html?id=1&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar verde">CF</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Carlos Eduardo Ferreira</div>
+                    <div class="celula-pessoa-email">carlos.ferreira@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10002</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Desenvolvimento Backend</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">04/01/2025</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=2" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=2&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=2&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar ouro">MS</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Maria da Graça Santos</div>
+                    <div class="celula-pessoa-email">maria.santos@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10003</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Base de Dados e SQL</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">05/01/2025</td>
+              <td><span class="etiqueta etiqueta-aviso"><span class="ponto"></span>Pendente</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=3" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=3&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=3&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar roxo">JP</div>
+                  <div>
+                    <div class="celula-pessoa-nome">João Paulo Lopes</div>
+                    <div class="celula-pessoa-email">joao.lopes@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10004</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Design de Interfaces (UI/UX)</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">06/01/2025</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=4" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=4&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=4&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar azul">BN</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Beatriz Simões Neves</div>
+                    <div class="celula-pessoa-email">beatriz.neves@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10005</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Redes e Infraestrutura</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">07/01/2025</td>
+              <td><span class="etiqueta etiqueta-aviso"><span class="ponto"></span>Pendente</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=5" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=5&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=5&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar verde">PV</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Pedro António Vaz</div>
+                    <div class="celula-pessoa-email">pedro.vaz@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10006</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Cibersegurança Básica</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">07/01/2025</td>
+              <td><span class="etiqueta etiqueta-perigo"><span class="ponto"></span>Rejeitado</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=6" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=6&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=6&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar ouro">FT</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Filomena Cruz Teixeira</div>
+                    <div class="celula-pessoa-email">filomena.teixeira@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10007</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Desenvolvimento Web Frontend</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">08/01/2025</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=7" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=7&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=7&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar roxo">AR</div>
+                  <div>
+                    <div class="celula-pessoa-nome">António José Rodrigues</div>
+                    <div class="celula-pessoa-email">antonio.rodrigues@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10008</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Desenvolvimento Backend</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">09/01/2025</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=8" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=8&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=8&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar azul">CP</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Conceição Lima Pereira</div>
+                    <div class="celula-pessoa-email">conceicao.pereira@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10009</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Base de Dados e SQL</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">10/01/2025</td>
+              <td><span class="etiqueta etiqueta-aviso"><span class="ponto"></span>Pendente</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=9" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=9&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=9&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                <div class="celula-pessoa">
+                  <div class="avatar verde">RM</div>
+                  <div>
+                    <div class="celula-pessoa-nome">Rui Sérgio Mendes</div>
+                    <div class="celula-pessoa-email">rui.mendes@email.com</div>
+                  </div>
+                </div>
+              </td>
+              <td><code style="font-size:11px;background:var(--fundo);padding:2px 7px;border-radius:5px;color:var(--azul-medio);">INS-2025-10010</code></td>
+              <td style="font-size:12px;color:var(--texto-mudo);">Design de Interfaces (UI/UX)</td>
+              <td style="font-size:12px;color:var(--texto-mudo);white-space:nowrap;">11/01/2025</td>
+              <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              <td>
+                <div class="acoes-tabela">
+                  <a href="ver.html?id=10" class="btn btn-secundario btn-sm">👁 Ver</a>
+                  <a href="actualizar_estado.html?id=10&estado=aprovado" class="btn btn-sucesso btn-sm" onclick="return confirm('Aprovar esta inscrição?')">✅ Aprovar</a>
+                  <a href="actualizar_estado.html?id=10&estado=rejeitado" class="btn btn-perigo btn-sm" onclick="return confirm('Rejeitar esta inscrição?')">❌ Rejeitar</a>
+                </div>
+              </td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+</body>
+</html>

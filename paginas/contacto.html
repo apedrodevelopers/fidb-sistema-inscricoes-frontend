@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contacto — Capacita CFTI</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .disposicao-contacto {
+      max-width: 1100px; margin: 0 auto; padding: 40px 32px;
+      display: grid; grid-template-columns: 1fr 360px; gap: 28px; align-items: start;
+    }
+
+    .cartao-contacto {
+      background: var(--branco); border: 1px solid var(--borda);
+      border-radius: var(--raio-lg); overflow: hidden;
+      box-shadow: var(--sombra); margin-bottom: 14px;
+    }
+
+    .contacto-cab {
+      background: var(--azul); padding: 18px 22px;
+      display: flex; align-items: center; gap: 12px;
+    }
+
+    .contacto-cab-icone {
+      width: 38px; height: 38px; border-radius: 9px;
+      background: rgba(201,168,76,0.15);
+      display: flex; align-items: center; justify-content: center; font-size: 18px;
+    }
+
+    .contacto-cab-titulo { font-family: 'Playfair Display', serif; font-size: 17px; color: #FFF; }
+    .contacto-cab-sub    { font-size: 12px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+    .contacto-corpo { padding: 20px 22px; }
+
+    .contacto-linha {
+      display: flex; align-items: flex-start; gap: 14px;
+      padding: 13px 0; border-bottom: 1px solid #EAF0F7;
+    }
+
+    .contacto-linha:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .contacto-linha-icone {
+      width: 40px; height: 40px; border-radius: 9px;
+      background: var(--dourado-bg);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+
+    .contacto-chave { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; color: var(--texto-mudo); margin-bottom: 3px; }
+    .contacto-valor { font-size: 14px; font-weight: 600; color: var(--texto); }
+    .contacto-detalhe { font-size: 12px; color: var(--texto-mudo); margin-top: 2px; }
+
+    /* Mapa placeholder */
+    .mapa {
+      background: var(--azul); border-radius: var(--raio);
+      height: 180px; margin-top: 16px;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+    }
+
+    .mapa::before {
+      content: '';
+      position: absolute; inset: 0;
+      background:
+        repeating-linear-gradient(45deg, transparent, transparent 20px, rgba(201,168,76,0.03) 20px, rgba(201,168,76,0.03) 21px),
+        repeating-linear-gradient(-45deg, transparent, transparent 20px, rgba(201,168,76,0.03) 20px, rgba(201,168,76,0.03) 21px);
+    }
+
+    .mapa-interior { position: relative; z-index: 1; text-align: center; }
+    .mapa-emoji    { font-size: 32px; display: block; margin-bottom: 7px; }
+    .mapa-nome     { font-size: 13px; color: rgba(255,255,255,0.6); font-weight: 500; }
+    .mapa-morada   { font-size: 12px; color: rgba(255,255,255,0.35); margin-top: 3px; }
+
+    @media (max-width: 800px) {
+      .disposicao-contacto { grid-template-columns: 1fr; padding: 28px 16px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-interior">
+    <a href="../inicio.html" class="navbar-marca">
+      <div class="navbar-marca-icone">🎓</div>
+      <div><div class="navbar-marca-nome">Capacita CFTI</div><div class="navbar-marca-sub">Centro de Formação em TI</div></div>
+    </a>
+    <div class="navbar-links">
+      <a href="../inicio.html" class="navbar-link">Início</a>
+      <a href="cursos.html"    class="navbar-link">Cursos</a>
+      <a href="inscricao.html" class="navbar-link">Inscrição</a>
+      <a href="contacto.html"  class="navbar-link activo">Contacto</a>
+    </div>
+    <div class="navbar-cta"><a href="inscricao.html" class="btn-nav">Inscrever-me</a></div>
+  </div>
+</nav>
+
+<div class="cab-pagina">
+  <div class="cab-pagina-interior">
+    <div class="cab-pagina-label"><div class="cab-pagina-label-linha"></div><span>Estamos à sua disposição</span></div>
+    <h1>Entre em <em>Contacto</em></h1>
+    <p class="cab-pagina-desc">Tem dúvidas sobre os cursos ou o processo de inscrição? A nossa equipa responde em menos de 48 horas.</p>
+  </div>
+</div>
+
+<div class="disposicao-contacto">
+
+  <!-- Formulário -->
+  <div>
+    <div class="cartao animar">
+      <div class="cartao-cab">
+        <div class="cartao-cab-icone">✉️</div>
+        <div>
+          <h3>Envie-nos uma mensagem</h3>
+          <div class="cartao-cab-sub">Respondemos em até 48 horas úteis</div>
+        </div>
+      </div>
+      <div class="cartao-corpo">
+
+        <!-- action="contacto.php" method="POST" — a implementar no backend -->
+        <form action="../inicio.html" method="GET">
+
+          <div class="linha-2">
+            <div class="grupo">
+              <label class="rotulo" for="nome">Nome <span class="obg">*</span></label>
+              <input type="text" id="nome" name="nome" placeholder="O seu nome completo" required>
+            </div>
+            <div class="grupo">
+              <label class="rotulo" for="email">Email <span class="obg">*</span></label>
+              <input type="email" id="email" name="email" placeholder="O seu email" required>
+            </div>
+          </div>
+
+          <div class="grupo">
+            <label class="rotulo" for="assunto">Assunto <span class="obg">*</span></label>
+            <select id="assunto" name="assunto" required>
+              <option value="">Selecione um assunto...</option>
+              <option>Informações sobre inscrição</option>
+              <option>Dúvidas sobre cursos</option>
+              <option>Horários e local</option>
+              <option>Propinas e pagamento</option>
+              <option>Parcerias institucionais</option>
+              <option>Outro</option>
+            </select>
+          </div>
+
+          <div class="grupo">
+            <label class="rotulo" for="mensagem">Mensagem <span class="obg">*</span></label>
+            <textarea id="mensagem" name="mensagem" placeholder="Escreva aqui a sua mensagem ou questão..." style="min-height:130px;" required></textarea>
+          </div>
+
+          <div style="display:flex; justify-content:flex-end;">
+            <button type="submit" class="btn btn-primario">Enviar mensagem →</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Coluna de contactos -->
+  <aside>
+
+    <div class="cartao-contacto animar">
+      <div class="contacto-cab">
+        <div class="contacto-cab-icone">📍</div>
+        <div>
+          <div class="contacto-cab-titulo">Localização</div>
+          <div class="contacto-cab-sub">Encontre-nos</div>
+        </div>
+      </div>
+      <div class="contacto-corpo">
+        <div class="contacto-linha">
+          <div class="contacto-linha-icone">🏢</div>
+          <div>
+            <div class="contacto-chave">Endereço</div>
+            <div class="contacto-valor">Rua da Formação, Nº 42</div>
+            <div class="contacto-detalhe">Bairro Central, Luanda, Angola</div>
+          </div>
+        </div>
+        <div class="contacto-linha">
+          <div class="contacto-linha-icone">🕐</div>
+          <div>
+            <div class="contacto-chave">Horário de atendimento</div>
+            <div class="contacto-valor">Segunda a Sexta</div>
+            <div class="contacto-detalhe">08h00 — 17h00</div>
+          </div>
+        </div>
+        <div class="mapa">
+          <div class="mapa-interior">
+            <span class="mapa-emoji">📍</span>
+            <div class="mapa-nome">Capacita CFTI</div>
+            <div class="mapa-morada">Rua da Formação, Nº 42 · Luanda</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="cartao-contacto animar" style="animation-delay:.1s">
+      <div class="contacto-cab">
+        <div class="contacto-cab-icone">📞</div>
+        <div>
+          <div class="contacto-cab-titulo">Contactos directos</div>
+          <div class="contacto-cab-sub">Fale connosco agora</div>
+        </div>
+      </div>
+      <div class="contacto-corpo">
+        <div class="contacto-linha">
+          <div class="contacto-linha-icone">📱</div>
+          <div>
+            <div class="contacto-chave">Telefone / WhatsApp</div>
+            <div class="contacto-valor">+244 923 000 000</div>
+            <div class="contacto-detalhe">Seg–Sex, 08h–17h</div>
+          </div>
+        </div>
+        <div class="contacto-linha">
+          <div class="contacto-linha-icone">✉️</div>
+          <div>
+            <div class="contacto-chave">Email geral</div>
+            <div class="contacto-valor">info@capacitacfti.ao</div>
+          </div>
+        </div>
+        <div class="contacto-linha">
+          <div class="contacto-linha-icone">🎓</div>
+          <div>
+            <div class="contacto-chave">Email de inscrições</div>
+            <div class="contacto-valor">inscricoes@capacitacfti.ao</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+</div>
+
+<footer class="rodape">
+  <div class="rodape-interior">
+    <div><div class="rodape-marca">Capacita CFTI</div><div class="rodape-sub">Centro de Formação em Tecnologias de Informação</div></div>
+    <div class="rodape-links">
+      <a href="../inicio.html">Início</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="inscricao.html">Inscrição</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </div>
+  <div class="rodape-direitos">© 2025 Capacita CFTI — Laboratório 2, Módulo 6</div>
+</footer>
+
+</body>
+</html>

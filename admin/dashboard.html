@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — Capacita CFTI</title>
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+<nav class="nav-lateral">
+  <a href="../publico/inicio.html" class="nav-marca">
+    <div class="nav-marca-icone">🎓</div>
+    <div>
+      <div class="nav-marca-nome">Capacita CFTI</div>
+      <div class="nav-marca-sub">Área Admin</div>
+    </div>
+  </a>
+  <div class="nav-utilizador">
+    <div class="nav-avatar">AD</div>
+    <div>
+      <div class="nav-utilizador-nome">Administrador</div>
+      <div class="nav-utilizador-cargo">Gestor do sistema</div>
+    </div>
+  </div>
+  <div class="nav-corpo">
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Principal</div>
+      <a href="dashboard.html" class="nav-item activo"><span class="nav-item-icone">📊</span> Dashboard</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Gestão</div>
+      <a href="cursos/listar.html" class="nav-item"><span class="nav-item-icone">🎓</span> Cursos</a>
+      <a href="formandos/listar.html" class="nav-item"><span class="nav-item-icone">👥</span> Formandos</a>
+      <a href="usuarios/listar.html" class="nav-item"><span class="nav-item-icone">🔑</span> Utilizadores</a>
+    </div>
+    <div class="nav-grupo">
+      <div class="nav-grupo-titulo">Sistema</div>
+      <a href="../publico/inicio.html" class="nav-item"><span class="nav-item-icone">🌐</span> Site público</a>
+    </div>
+  </div>
+  <div class="nav-rodape">
+    <a href="entrar.html" class="nav-sair"><span>🚪</span> Sair</a>
+  </div>
+</nav>
+
+<div class="area-principal">
+  <header class="barra-topo">
+    <div>
+      <div class="barra-topo-titulo">Dashboard</div>
+      <div class="barra-topo-sub">Visão geral do sistema</div>
+    </div>
+  </header>
+
+  <main class="conteudo">
+
+    <!-- MÉTRICAS -->
+    <div class="grelha-metricas">
+      <div class="metrica animar">
+        <div class="metrica-icone azul">📝</div>
+        <div>
+          <div class="metrica-rotulo">Total de inscrições</div>
+          <div class="metrica-valor">85</div>
+        </div>
+      </div>
+      <div class="metrica animar" style="animation-delay:.06s">
+        <div class="metrica-icone verde">✅</div>
+        <div>
+          <div class="metrica-rotulo">Aprovados</div>
+          <div class="metrica-valor">62</div>
+        </div>
+      </div>
+      <div class="metrica animar" style="animation-delay:.12s">
+        <div class="metrica-icone aviso">⏳</div>
+        <div>
+          <div class="metrica-rotulo">Pendentes</div>
+          <div class="metrica-valor">18</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+
+      <!-- Últimas inscrições -->
+      <div class="cartao animar" style="animation-delay:.18s">
+        <div class="cartao-cab">
+          <div><div class="cartao-titulo">Últimas inscrições</div><div class="cartao-sub">5 mais recentes</div></div>
+          <a href="formandos/listar.html" class="btn btn-secundario btn-sm">Ver todos</a>
+        </div>
+        <div class="tabela-envolvedor">
+          <table class="tabela">
+            <thead><tr><th>Formando</th><th>Curso</th><th>Estado</th></tr></thead>
+            <tbody>
+              <tr>
+                <td><div class="celula-pessoa"><div class="avatar azul">AM</div><div class="celula-pessoa-nome">Ana Monteiro</div></div></td>
+                <td style="font-size:12px;color:var(--texto-mudo);">Web Frontend</td>
+                <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              </tr>
+              <tr>
+                <td><div class="celula-pessoa"><div class="avatar verde">CF</div><div class="celula-pessoa-nome">Carlos Ferreira</div></div></td>
+                <td style="font-size:12px;color:var(--texto-mudo);">Backend</td>
+                <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              </tr>
+              <tr>
+                <td><div class="celula-pessoa"><div class="avatar ouro">MS</div><div class="celula-pessoa-nome">Maria Santos</div></div></td>
+                <td style="font-size:12px;color:var(--texto-mudo);">Base de Dados</td>
+                <td><span class="etiqueta etiqueta-aviso"><span class="ponto"></span>Pendente</span></td>
+              </tr>
+              <tr>
+                <td><div class="celula-pessoa"><div class="avatar roxo">JP</div><div class="celula-pessoa-nome">João Lopes</div></div></td>
+                <td style="font-size:12px;color:var(--texto-mudo);">UI/UX Design</td>
+                <td><span class="etiqueta etiqueta-sucesso"><span class="ponto"></span>Aprovado</span></td>
+              </tr>
+              <tr>
+                <td><div class="celula-pessoa"><div class="avatar azul">BN</div><div class="celula-pessoa-nome">Beatriz Neves</div></div></td>
+                <td style="font-size:12px;color:var(--texto-mudo);">Redes</td>
+                <td><span class="etiqueta etiqueta-aviso"><span class="ponto"></span>Pendente</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Resumo de cursos -->
+      <div class="cartao animar" style="animation-delay:.24s">
+        <div class="cartao-cab">
+          <div><div class="cartao-titulo">Ocupação por curso</div><div class="cartao-sub">Inscritos vs vagas</div></div>
+          <a href="cursos/listar.html" class="btn btn-secundario btn-sm">Gerir</a>
+        </div>
+        <div class="cartao-corpo">
+          <table class="tabela">
+            <thead><tr><th>Curso</th><th>Inscritos</th><th>Vagas</th><th>Livres</th></tr></thead>
+            <tbody>
+              <tr><td>🖥️ Web Frontend</td><td style="font-weight:600;">14</td><td style="color:var(--texto-mudo);">20</td><td><span class="etiqueta etiqueta-aviso">6</span></td></tr>
+              <tr><td>⚙️ Backend</td><td style="font-weight:600;">18</td><td style="color:var(--texto-mudo);">20</td><td><span class="etiqueta etiqueta-perigo">2</span></td></tr>
+              <tr><td>🗄️ Base de Dados</td><td style="font-weight:600;">10</td><td style="color:var(--texto-mudo);">25</td><td><span class="etiqueta etiqueta-sucesso">15</span></td></tr>
+              <tr><td>🎨 UI/UX Design</td><td style="font-weight:600;">22</td><td style="color:var(--texto-mudo);">30</td><td><span class="etiqueta etiqueta-aviso">8</span></td></tr>
+              <tr><td>🌐 Redes</td><td style="font-weight:600;">12</td><td style="color:var(--texto-mudo);">20</td><td><span class="etiqueta etiqueta-sucesso">8</span></td></tr>
+              <tr><td>🔐 Cibersegurança</td><td style="font-weight:600;">9</td><td style="color:var(--texto-mudo);">25</td><td><span class="etiqueta etiqueta-sucesso">16</span></td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Capacita CFTI — Centro de Formação em Tecnologias de Informação</title>
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    /* ─── SECÇÃO DESTAQUE ─── */
+    .destaque {
+      background: var(--azul);
+      padding: 72px 32px 56px;
+      position: relative; overflow: hidden;
+    }
+
+    .destaque::before {
+      content: '';
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px);
+    }
+
+    .destaque::after {
+      content: '';
+      position: absolute; width: 600px; height: 600px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      top: -200px; right: -100px; pointer-events: none;
+    }
+
+    .destaque-interior {
+      max-width: 1100px; margin: 0 auto;
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: 1fr 380px; gap: 60px; align-items: center;
+    }
+
+    .destaque-label { display: flex; align-items: center; gap: 8px; margin-bottom: 18px; }
+    .destaque-label-linha { width: 28px; height: 2px; background: var(--dourado); }
+    .destaque-label span  { font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dourado); }
+
+    .destaque h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 50px; font-weight: 700;
+      color: #FFF; line-height: 1.12; margin-bottom: 18px;
+    }
+
+    .destaque h1 em { font-style: normal; color: var(--dourado-cl); }
+
+    .destaque-desc { color: rgba(255,255,255,0.5); font-size: 16px; font-weight: 300; max-width: 460px; margin-bottom: 32px; line-height: 1.7; }
+
+    .destaque-accoes { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 44px; }
+
+    .destaque-numeros { display: flex; gap: 32px; padding-top: 28px; border-top: 1px solid rgba(255,255,255,0.1); }
+
+    .numero-val { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; color: var(--dourado-cl); }
+    .numero-rot { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 2px; }
+
+    .destaque-painel {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 16px; padding: 24px;
+    }
+
+    .painel-titulo { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: var(--dourado); margin-bottom: 14px; }
+
+    .painel-curso {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .painel-curso:last-of-type { border-bottom: none; }
+
+    .painel-curso-emoji { font-size: 22px; width: 36px; text-align: center; }
+    .painel-curso-nome  { font-size: 13px; font-weight: 500; color: #FFF; }
+    .painel-curso-meta  { font-size: 11px; color: rgba(255,255,255,0.4); margin-top: 2px; }
+
+    .painel-vagas {
+      margin-left: auto; flex-shrink: 0;
+      font-size: 10px; font-weight: 700;
+      padding: 3px 10px; border-radius: 20px;
+      background: rgba(201,168,76,0.15); color: var(--dourado-cl);
+      border: 1px solid rgba(201,168,76,0.25);
+    }
+
+    /* ─── SECÇÃO CURSOS ─── */
+    .secao { padding: 64px 32px; }
+    .secao.fundo-branco { background: var(--branco); }
+
+    .secao-interior { max-width: 1100px; margin: 0 auto; }
+
+    .secao-cab { text-align: center; margin-bottom: 44px; }
+    .secao-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--dourado); margin-bottom: 10px; }
+    .secao-cab h2 { font-family: 'Playfair Display', serif; font-size: 32px; color: var(--texto); margin-bottom: 10px; }
+    .secao-cab p  { color: var(--texto-mudo); font-size: 14px; max-width: 460px; margin: 0 auto; }
+
+    .grelha-cursos-inicio {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-bottom: 36px;
+    }
+
+    .cartao-curso-inicio {
+      border: 1px solid var(--borda); border-radius: var(--raio-lg);
+      overflow: hidden; text-decoration: none; display: block;
+      transition: all 0.22s; box-shadow: var(--sombra);
+    }
+
+    .cartao-curso-inicio:hover { transform: translateY(-4px); box-shadow: var(--sombra-md); }
+
+    .cartao-curso-topo {
+      background: var(--azul); padding: 24px 20px;
+      position: relative; overflow: hidden;
+    }
+
+    .cartao-curso-topo::after {
+      content: ''; position: absolute;
+      bottom: -28px; right: -18px;
+      width: 90px; height: 90px; border-radius: 50%;
+      background: rgba(201,168,76,0.08);
+    }
+
+    .cartao-curso-emoji { font-size: 30px; display: block; margin-bottom: 10px; position: relative; z-index: 1; }
+    .cartao-curso-nome  { font-family: 'Playfair Display', serif; font-size: 15px; color: #FFF; position: relative; z-index: 1; line-height: 1.3; }
+
+    .cartao-curso-corpo { padding: 16px 20px; background: var(--branco); }
+    .cartao-curso-desc  { font-size: 13px; color: var(--texto-sub); line-height: 1.6; margin-bottom: 14px; }
+    .cartao-curso-tags  { display: flex; gap: 6px; flex-wrap: wrap; }
+
+    .secao-rodape { text-align: center; }
+
+    /* ─── CTA INSCRIÇÃO ─── */
+    .cta {
+      background: var(--azul); padding: 64px 32px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+
+    .cta::before {
+      content: '';
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      top: -200px; right: -80px; pointer-events: none;
+    }
+
+    .cta-interior { max-width: 600px; margin: 0 auto; position: relative; z-index: 1; }
+
+    .cta-interior h2 { font-family: 'Playfair Display', serif; font-size: 34px; color: #FFF; margin-bottom: 14px; }
+    .cta-interior h2 em { font-style: normal; color: var(--dourado-cl); }
+    .cta-interior p { color: rgba(255,255,255,0.5); font-size: 14px; margin-bottom: 32px; line-height: 1.7; }
+    .cta-accoes { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+    @media (max-width: 900px) {
+      .destaque-interior { grid-template-columns: 1fr; gap: 32px; }
+      .destaque h1 { font-size: 34px; }
+      .destaque-painel { display: none; }
+      .grelha-cursos-inicio { grid-template-columns: 1fr 1fr; }
+      .secao { padding: 48px 16px; }
+      .destaque { padding: 48px 16px 40px; }
+      .cta { padding: 48px 16px; }
+    }
+
+    @media (max-width: 600px) {
+      .grelha-cursos-inicio { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-interior">
+    <a href="inicio.html" class="navbar-marca">
+      <div class="navbar-marca-icone">🎓</div>
+      <div>
+        <div class="navbar-marca-nome">Capacita CFTI</div>
+        <div class="navbar-marca-sub">Centro de Formação em TI</div>
+      </div>
+    </a>
+    <div class="navbar-links">
+      <a href="inicio.html"           class="navbar-link activo">Início</a>
+      <a href="paginas/cursos.html"   class="navbar-link">Cursos</a>
+      <a href="paginas/inscricao.html"class="navbar-link">Inscrição</a>
+      <a href="paginas/contacto.html" class="navbar-link">Contacto</a>
+    </div>
+    <div class="navbar-cta">
+      <a href="paginas/inscricao.html" class="btn-nav">Inscrever-me</a>
+    </div>
+  </div>
+</nav>
+
+<!-- DESTAQUE -->
+<section class="destaque">
+  <div class="destaque-interior">
+    <div>
+      <div class="destaque-label">
+        <div class="destaque-label-linha"></div>
+        <span>Inscrições abertas — Turma 2025</span>
+      </div>
+      <h1>Formação que<br>transforma<br><em>carreiras</em></h1>
+      <p class="destaque-desc">Cursos práticos e certificados na área de tecnologia de informação. Desenvolva as competências que o mercado de trabalho exige.</p>
+      <div class="destaque-accoes">
+        <a href="paginas/inscricao.html" class="btn btn-dourado">Fazer inscrição →</a>
+        <a href="paginas/cursos.html"    class="btn" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.2);">Ver cursos</a>
+      </div>
+      <div class="destaque-numeros">
+        <div><div class="numero-val">6</div><div class="numero-rot">Cursos disponíveis</div></div>
+        <div><div class="numero-val">3–5</div><div class="numero-rot">Meses de formação</div></div>
+        <div><div class="numero-val">100%</div><div class="numero-rot">Certificado incluído</div></div>
+      </div>
+    </div>
+
+    <div class="destaque-painel">
+      <div class="painel-titulo">Cursos em destaque</div>
+      <div class="painel-curso">
+        <span class="painel-curso-emoji">🖥️</span>
+        <div><div class="painel-curso-nome">Web Frontend</div><div class="painel-curso-meta">4 meses · Presencial</div></div>
+        <span class="painel-vagas">6 vagas</span>
+      </div>
+      <div class="painel-curso">
+        <span class="painel-curso-emoji">⚙️</span>
+        <div><div class="painel-curso-nome">Backend</div><div class="painel-curso-meta">5 meses · Presencial</div></div>
+        <span class="painel-vagas">2 vagas</span>
+      </div>
+      <div class="painel-curso">
+        <span class="painel-curso-emoji">🗄️</span>
+        <div><div class="painel-curso-nome">Base de Dados</div><div class="painel-curso-meta">3 meses · Presencial</div></div>
+        <span class="painel-vagas">15 vagas</span>
+      </div>
+      <div class="painel-curso">
+        <span class="painel-curso-emoji">🔐</span>
+        <div><div class="painel-curso-nome">Cibersegurança</div><div class="painel-curso-meta">3 meses · Online</div></div>
+        <span class="painel-vagas">16 vagas</span>
+      </div>
+      <div style="margin-top:14px; padding-top:14px; border-top:1px solid rgba(255,255,255,0.07); text-align:center;">
+        <a href="paginas/cursos.html" style="font-size:12px; color:var(--dourado); text-decoration:none; font-weight:600;">Ver todos os cursos →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURSOS EM DESTAQUE -->
+<section class="secao fundo-branco">
+  <div class="secao-interior">
+    <div class="secao-cab">
+      <div class="secao-label">Oferta formativa</div>
+      <h2>Os nossos cursos</h2>
+      <p>Escolha a formação certa para o seu percurso profissional</p>
+    </div>
+
+    <div class="grelha-cursos-inicio">
+      <a href="paginas/cursos.html" class="cartao-curso-inicio">
+        <div class="cartao-curso-topo"><span class="cartao-curso-emoji">🖥️</span><div class="cartao-curso-nome">Desenvolvimento Web Frontend</div></div>
+        <div class="cartao-curso-corpo">
+          <p class="cartao-curso-desc">HTML, CSS, JavaScript e frameworks modernos para criar interfaces interativas.</p>
+          <div class="cartao-curso-tags"><span class="etiqueta etiqueta-azul">4 meses</span><span class="etiqueta etiqueta-verde">Presencial</span></div>
+        </div>
+      </a>
+      <a href="paginas/cursos.html" class="cartao-curso-inicio">
+        <div class="cartao-curso-topo"><span class="cartao-curso-emoji">⚙️</span><div class="cartao-curso-nome">Desenvolvimento Backend</div></div>
+        <div class="cartao-curso-corpo">
+          <p class="cartao-curso-desc">Node.js, Python e APIs REST para aplicações robustas do lado servidor.</p>
+          <div class="cartao-curso-tags"><span class="etiqueta etiqueta-azul">5 meses</span><span class="etiqueta etiqueta-verde">Presencial</span></div>
+        </div>
+      </a>
+      <a href="paginas/cursos.html" class="cartao-curso-inicio">
+        <div class="cartao-curso-topo"><span class="cartao-curso-emoji">🔐</span><div class="cartao-curso-nome">Cibersegurança Básica</div></div>
+        <div class="cartao-curso-corpo">
+          <p class="cartao-curso-desc">Segurança informática, criptografia e protecção de sistemas digitais.</p>
+          <div class="cartao-curso-tags"><span class="etiqueta etiqueta-azul">3 meses</span><span class="etiqueta etiqueta-ouro">Online</span></div>
+        </div>
+      </a>
+    </div>
+
+    <div class="secao-rodape">
+      <a href="paginas/cursos.html" class="btn btn-primario">Ver toda a oferta formativa →</a>
+    </div>
+  </div>
+</section>
+
+<!-- CTA INSCRIÇÃO -->
+<section class="cta">
+  <div class="cta-interior">
+    <div class="secao-label" style="color:var(--dourado);">Inscrições abertas</div>
+    <h2>Pronto para começar a sua <em>jornada</em>?</h2>
+    <p>As vagas são limitadas. Garanta já o seu lugar na turma de Janeiro 2025.</p>
+    <div class="cta-accoes">
+      <a href="paginas/inscricao.html" class="btn btn-dourado">Fazer inscrição agora →</a>
+      <a href="paginas/contacto.html"  class="btn" style="background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.2);">Falar connosco</a>
+    </div>
+  </div>
+</section>
+
+<!-- RODAPÉ -->
+<footer class="rodape">
+  <div class="rodape-interior">
+    <div>
+      <div class="rodape-marca">Capacita CFTI</div>
+      <div class="rodape-sub">Centro de Formação em Tecnologias de Informação</div>
+    </div>
+    <div class="rodape-links">
+      <a href="inicio.html">Início</a>
+      <a href="paginas/cursos.html">Cursos</a>
+      <a href="paginas/inscricao.html">Inscrição</a>
+      <a href="paginas/contacto.html">Contacto</a>
+    </div>
+  </div>
+  <div class="rodape-direitos">
+    © 2025 Capacita CFTI — Laboratório 2, Módulo 6
+  </div>
+</footer>
+
+</body>
+</html>

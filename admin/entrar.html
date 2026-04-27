@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar — Capacita CFTI</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #0B1F3A;
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      padding: 20px; position: relative; overflow: hidden;
+    }
+    .fundo {
+      position: absolute; inset: 0;
+      background-image:
+        repeating-linear-gradient(45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px),
+        repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,76,0.03) 40px, rgba(201,168,76,0.03) 41px);
+    }
+    .brilho {
+      position: absolute; width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.07) 0%, transparent 70%);
+      top: -150px; right: -100px; pointer-events: none;
+    }
+    .cartao {
+      position: relative; z-index: 1;
+      background: #FFF; border-radius: 20px;
+      width: 100%; max-width: 420px;
+      box-shadow: 0 32px 80px rgba(0,0,0,0.3);
+      overflow: hidden;
+    }
+    .topo {
+      background: #0B1F3A; padding: 32px 32px 24px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .topo::before {
+      content: ''; position: absolute; top:-40px; right:-40px;
+      width:160px; height:160px; border-radius:50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+    }
+    .logo {
+      width: 54px; height: 54px; border-radius: 14px;
+      background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.3);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; margin: 0 auto 14px; position: relative; z-index: 1;
+    }
+    .topo h1 { font-family: 'Playfair Display', serif; font-size: 20px; color: #FFF; margin-bottom: 4px; position: relative; z-index: 1; }
+    .topo p  { font-size: 12px; color: rgba(255,255,255,0.4); position: relative; z-index: 1; }
+    .demo {
+      margin-top: 16px; position: relative; z-index: 1;
+      background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2);
+      border-radius: 8px; padding: 10px 14px; text-align: left;
+    }
+    .demo strong { display: block; font-size: 10px; text-transform: uppercase; letter-spacing: 0.07em; color: #E8C97A; margin-bottom: 5px; }
+    .demo-linha { display: flex; justify-content: space-between; font-size: 12px; }
+    .demo-chave { color: rgba(255,255,255,0.4); }
+    .demo-val   { color: rgba(255,255,255,0.8); font-weight: 600; font-family: monospace; }
+    .corpo { padding: 28px 32px; }
+    .grupo { margin-bottom: 16px; }
+    .rotulo {
+      display: block; font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: #3D5A7A; margin-bottom: 6px;
+    }
+    input[type="text"], input[type="password"] {
+      width: 100%; padding: 11px 14px;
+      font-size: 14px; font-family: 'DM Sans', sans-serif;
+      color: #0B1F3A; background: #F0F4F9;
+      border: 1.5px solid #D8E4EF; border-radius: 9px;
+      outline: none; transition: all 0.2s;
+    }
+    input:focus { border-color: #1E3F6B; background: #FFF; box-shadow: 0 0 0 3px rgba(30,63,107,0.08); }
+    .btn-entrar {
+      width: 100%; padding: 13px;
+      background: #0B1F3A; color: #FFF;
+      border: none; border-radius: 9px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; transition: all 0.2s; margin-top: 4px;
+      text-decoration: none; display: block; text-align: center;
+    }
+    .btn-entrar:hover { background: #1E3F6B; }
+    .rodape { padding: 14px 32px 22px; text-align: center; border-top: 1px solid #EAF0F7; }
+    .rodape a { font-size: 13px; color: #7A93AE; text-decoration: none; }
+    .rodape a:hover { color: #0B1F3A; }
+  </style>
+</head>
+<body>
+<div class="fundo"></div>
+<div class="brilho"></div>
+<div class="cartao">
+  <div class="topo">
+    <div class="logo">🎓</div>
+    <h1>Área Administrativa</h1>
+    <p>Capacita CFTI — Centro de Formação em TI</p>
+  </div>
+  <div class="corpo">
+    <!-- action="entrar.php" method="POST" — a implementar no backend -->
+    <form action="dashboard.html" method="GET">
+      <div class="grupo">
+        <label class="rotulo" for="utilizador">Utilizador</label>
+        <input type="text" id="utilizador" name="utilizador" placeholder="Ex: admin" required autocomplete="username">
+      </div>
+      <div class="grupo">
+        <label class="rotulo" for="senha">Senha</label>
+        <input type="password" id="senha" name="senha" placeholder="A sua senha" required autocomplete="current-password">
+      </div>
+      <button type="submit" class="btn-entrar">Entrar no painel →</button>
+    </form>
+  </div>
+  <div class="rodape">
+    <a href="../publico/inicio.html">← Voltar ao site público</a>
+  </div>
+</div>
+</body>
+</html>

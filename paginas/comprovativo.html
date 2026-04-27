@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comprovativo — Capacita CFTI</title>
+  <link rel="stylesheet" href="../css/global.css">
+  <style>
+    .area-comprovativo { max-width: 720px; margin: 0 auto; padding: 40px 32px; }
+
+    /* Cabeçalho de confirmação */
+    .confirmacao {
+      background: var(--azul); border-radius: var(--raio-lg);
+      padding: 44px 36px; text-align: center;
+      position: relative; overflow: hidden; margin-bottom: 22px;
+    }
+
+    .confirmacao::before {
+      content: ''; position: absolute; top:-60px; right:-60px;
+      width:220px; height:220px; border-radius:50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.1) 0%, transparent 70%);
+    }
+
+    .confirmacao-anel {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(201,168,76,0.12);
+      border: 2px solid rgba(201,168,76,0.35);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px; position: relative; z-index: 1;
+    }
+
+    .confirmacao-anel::after {
+      content: ''; width: 28px; height: 18px;
+      border-left: 4px solid var(--dourado);
+      border-bottom: 4px solid var(--dourado);
+      transform: rotate(-45deg) translateY(-3px); display: block;
+    }
+
+    .confirmacao h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; color: #FFF; margin-bottom: 8px; position: relative; z-index: 1;
+    }
+
+    .confirmacao p { color: rgba(255,255,255,0.5); font-size: 14px; position: relative; z-index: 1; margin-bottom: 24px; }
+
+    .numero-inscricao {
+      display: inline-block; position: relative; z-index: 1;
+      background: rgba(201,168,76,0.12);
+      border: 1px solid rgba(201,168,76,0.3);
+      border-radius: 10px; padding: 12px 28px;
+    }
+
+    .numero-inscricao-rotulo { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.4); margin-bottom: 4px; }
+    .numero-inscricao-valor  { font-family: 'Playfair Display', serif; font-size: 22px; color: var(--dourado-cl); letter-spacing: 0.05em; }
+
+    /* Curso inscrito */
+    .curso-inscrito {
+      background: var(--azul); border-radius: var(--raio-lg);
+      padding: 20px 24px; display: flex; align-items: center;
+      gap: 16px; margin-bottom: 20px;
+    }
+
+    .curso-inscrito-emoji { font-size: 36px; }
+    .curso-inscrito-nome  { font-family: 'Playfair Display', serif; font-size: 18px; color: #FFF; margin-bottom: 6px; }
+    .curso-inscrito-meta  { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+
+    .estado-pendente {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,193,7,0.15); border: 1px solid rgba(255,193,7,0.3);
+      color: #F0C040; font-size: 12px; font-weight: 600;
+      padding: 4px 14px; border-radius: 20px;
+    }
+
+    .estado-ponto {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: #F0C040;
+      animation: pulsar 1.5s infinite;
+    }
+
+    @keyframes pulsar { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(.8)} }
+
+    /* Grelha de dados */
+    .grelha-dados {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 20px;
+    }
+
+    .dado {
+      background: var(--branco); border: 1px solid var(--borda);
+      border-radius: var(--raio); padding: 14px 16px;
+      box-shadow: var(--sombra);
+    }
+
+    .dado-rotulo { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--texto-mudo); margin-bottom: 5px; }
+    .dado-valor  { font-size: 14px; font-weight: 600; color: var(--texto); word-break: break-word; }
+
+    /* Aviso */
+    .aviso-proximos {
+      background: var(--sucesso-bg); border: 1px solid #B8DFC9;
+      border-left: 4px solid var(--sucesso);
+      border-radius: var(--raio); padding: 16px 20px;
+      margin-bottom: 20px;
+      display: flex; gap: 12px; align-items: flex-start;
+    }
+
+    .aviso-proximos-titulo { font-size: 14px; font-weight: 700; color: var(--sucesso); margin-bottom: 4px; }
+    .aviso-proximos-texto  { font-size: 13px; color: #2A7A50; line-height: 1.6; }
+
+    /* Acções */
+    .accoes { display: flex; gap: 10px; }
+
+    @media print {
+      .navbar, .accoes, footer { display: none !important; }
+      .area-comprovativo { padding: 0; }
+    }
+
+    @media (max-width: 600px) {
+      .area-comprovativo { padding: 28px 16px; }
+      .grelha-dados { grid-template-columns: 1fr; }
+      .curso-inscrito { flex-direction: column; text-align: center; }
+      .accoes { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-interior">
+    <a href="../inicio.html" class="navbar-marca">
+      <div class="navbar-marca-icone">🎓</div>
+      <div><div class="navbar-marca-nome">Capacita CFTI</div><div class="navbar-marca-sub">Centro de Formação em TI</div></div>
+    </a>
+    <div class="navbar-links">
+      <a href="../inicio.html" class="navbar-link">Início</a>
+      <a href="cursos.html"    class="navbar-link">Cursos</a>
+      <a href="inscricao.html" class="navbar-link">Inscrição</a>
+      <a href="contacto.html"  class="navbar-link">Contacto</a>
+    </div>
+    <div class="navbar-cta"><a href="inscricao.html" class="btn-nav">Nova inscrição</a></div>
+  </div>
+</nav>
+
+<div class="area-comprovativo">
+
+  <!-- Confirmação -->
+  <div class="confirmacao animar">
+    <div class="confirmacao-anel"></div>
+    <h2>Inscrição confirmada!</h2>
+    <p>O seu pedido foi registado com sucesso no sistema da Capacita CFTI.</p>
+    <div class="numero-inscricao">
+      <div class="numero-inscricao-rotulo">Número de inscrição</div>
+      <!-- Em PHP: echo 'INS-' . date('Y') . '-' . str_pad($id, 5, '0', STR_PAD_LEFT); -->
+      <div class="numero-inscricao-valor">INS-2025-10011</div>
+    </div>
+  </div>
+
+  <!-- Curso inscrito -->
+  <div class="curso-inscrito animar" style="animation-delay:.1s">
+    <div class="curso-inscrito-emoji">🖥️</div>
+    <div>
+      <!-- Em PHP: echo htmlspecialchars($curso['nome']); -->
+      <div class="curso-inscrito-nome">Desenvolvimento Web Frontend</div>
+      <div class="curso-inscrito-meta">
+        <span class="etiqueta etiqueta-ouro">4 meses</span>
+        <span class="estado-pendente"><span class="estado-ponto"></span>Pendente de aprovação</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dados do formando -->
+  <div class="grelha-dados animar" style="animation-delay:.16s">
+    <div class="dado">
+      <div class="dado-rotulo">Nome completo</div>
+      <!-- Em PHP: echo htmlspecialchars($formando['nome']); -->
+      <div class="dado-valor">João Manuel da Silva</div>
+    </div>
+    <div class="dado">
+      <div class="dado-rotulo">Nº documento</div>
+      <div class="dado-valor">004578901LA041</div>
+    </div>
+    <div class="dado">
+      <div class="dado-rotulo">Email</div>
+      <div class="dado-valor">joao.silva@email.com</div>
+    </div>
+    <div class="dado">
+      <div class="dado-rotulo">Telefone</div>
+      <div class="dado-valor">923 456 789</div>
+    </div>
+    <div class="dado">
+      <div class="dado-rotulo">Data de inscrição</div>
+      <!-- Em PHP: echo date('d/m/Y'); -->
+      <div class="dado-valor">27/04/2026</div>
+    </div>
+    <div class="dado">
+      <div class="dado-rotulo">Hora de inscrição</div>
+      <!-- Em PHP: echo date('H:i'); -->
+      <div class="dado-valor">14:35</div>
+    </div>
+  </div>
+
+  <!-- Aviso próximos passos -->
+  <div class="aviso-proximos animar" style="animation-delay:.22s">
+    <span style="font-size:20px;">✅</span>
+    <div>
+      <div class="aviso-proximos-titulo">Próximos passos</div>
+      <div class="aviso-proximos-texto">A nossa equipa irá rever a sua inscrição e entrar em contacto no prazo máximo de <strong>48 horas úteis</strong> para confirmação e informações sobre o início da formação. Guarde o número de inscrição para referência futura.</div>
+    </div>
+  </div>
+
+  <!-- Acções -->
+  <div class="accoes animar" style="animation-delay:.28s">
+    <button class="btn btn-secundario" onclick="window.print()" style="flex:1;justify-content:center;">🖨 Imprimir comprovativo</button>
+    <a href="inscricao.html" class="btn btn-primario" style="flex:1;justify-content:center;">+ Nova inscrição</a>
+    <a href="../inicio.html" class="btn btn-dourado" style="flex:1;justify-content:center;">Voltar ao início</a>
+  </div>
+
+</div>
+
+<footer class="rodape">
+  <div class="rodape-interior">
+    <div><div class="rodape-marca">Capacita CFTI</div><div class="rodape-sub">Centro de Formação em Tecnologias de Informação</div></div>
+    <div class="rodape-links">
+      <a href="../inicio.html">Início</a>
+      <a href="cursos.html">Cursos</a>
+      <a href="inscricao.html">Inscrição</a>
+      <a href="contacto.html">Contacto</a>
+    </div>
+  </div>
+  <div class="rodape-direitos">© 2025 Capacita CFTI — Laboratório 2, Módulo 6</div>
+</footer>
+
+</body>
+</html>
